@@ -1,0 +1,89 @@
+{
+  "version": "36.0.0",
+  "artifacts": {
+    "Bankingappstack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "Bankingappstack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "Bankingappstack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "Bankingappstack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6ef5e30dbc9ebf965c57ed8c950fb15d4afb8a584a65d0ebe794be66fc990228.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "Bankingappstack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "Bankingappstack.assets"
+      ],
+      "metadata": {
+        "/Bankingappstack/bankingapps3logicid/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingapps3logicid9B238732"
+          }
+        ],
+        "/Bankingappstack/bankingappiamrole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingappiamrole8CDE6A98"
+          }
+        ],
+        "/Bankingappstack/bankingapplambdafunction/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingapplambdafunction2AF469F0"
+          }
+        ],
+        "/Bankingappstack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/Bankingappstack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/Bankingappstack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/Bankingappstack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "Bankingappstack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
