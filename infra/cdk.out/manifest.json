@@ -18,7 +18,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/6ef5e30dbc9ebf965c57ed8c950fb15d4afb8a584a65d0ebe794be66fc990228.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/d84776e998fe3865039d770ed72ad9094d7b216d1b047157ec614c8f3a6a02e0.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -50,6 +50,54 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "bankingapplambdafunction2AF469F0"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapi122344F4"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapiDeploymentDB6626474fbf2e65eae377c8965708fa1fc05252"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapiDeploymentStageprod2C0AB406"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapiEndpoint89771746"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Default/banhstatus/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapibanhstatus62704E8C"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Default/banhstatus/GET/ApiPermission.Bankingappstackbankingrestapi0A27C6F7.GET..banhstatus": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapibanhstatusGETApiPermissionBankingappstackbankingrestapi0A27C6F7GETbanhstatus45A45D73"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Default/banhstatus/GET/ApiPermission.Test.Bankingappstackbankingrestapi0A27C6F7.GET..banhstatus": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapibanhstatusGETApiPermissionTestBankingappstackbankingrestapi0A27C6F7GETbanhstatusC3623A33"
+          }
+        ],
+        "/Bankingappstack/bankingrestapi/Default/banhstatus/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "bankingrestapibanhstatusGET22D34667"
           }
         ],
         "/Bankingappstack/CDKMetadata/Default": [

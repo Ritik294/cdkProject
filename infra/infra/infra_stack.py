@@ -3,6 +3,7 @@ from aws_cdk import App, Stack
 import aws_cdk.aws_s3 as s3
 import aws_cdk.aws_iam as iam
 import aws_cdk.aws_lambda as lb
+import aws_cdk.aws_apigateway as apig
 from constructs import Construct
 
 
@@ -22,5 +23,10 @@ class InfraStack(Stack):
         #Lambda
         awslambda=lb.Function(self,'bankingapplambdafunction',role=iamrole,runtime=lb.Runtime.PYTHON_3_9,code=lb.Code.from_asset('../services/'),handler='lambda_function.lambda_handler')
         # Your stack definition here
+
+        #apigateway
+        bankingrestapi=apig.LambdaRestApi(self,"bankingrestapi",handler=awslambda,rest_api_name='bankingrestapi',deploy=True,proxy=False)
+        banhstatus=bankingrestapi.root.add_resource('banhstatus')
+        banhstatus.add_method('GET')
 app =App()
 InfraStack(app, "Bankingappstack")
