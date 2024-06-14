@@ -12,10 +12,14 @@ class InfraStack(Stack):
     def __init__(self, scope: Construct, id: str, **kwargs) -> None:
         super().__init__(scope, id, **kwargs)
 
-        #S3 Bucket
+
+        #S3 Bucket L1
+        S3Bucketl1 = s3.CfnBucket(self,'S3Bucketl1',bucket_name="banking-app-bucket",vsersioningconfiguration: Status:'Enabled')
+        #S3 Bucket L2
         s3bucket=s3.Bucket(self, "bankingapps3logicid", 
-                              bucket_name="banking-app-bucket"
+                              bucket_name="banking-app-bucket",versioned='True'
                               )
+        
         #IAM Role
         iamrole=iam.Role(self,'bankingappiamrole',role_name='bankingapps3iamrole',description='Iam role for the lambda to access s3 bucket',assumed_by=iam.ServicePrincipal("lambda.amazonaws.com"))
         iamrole.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name('AmazonS3FullAccess'))
@@ -23,7 +27,8 @@ class InfraStack(Stack):
         #Lambda
         awslambda=lb.Function(self,'bankingapplambdafunction',role=iamrole,runtime=lb.Runtime.PYTHON_3_9,code=lb.Code.from_asset('../services/'),handler='lambda_function.lambda_handler')
         # Your stack definition here
-
+        #L3Api Construct
+        l3api=apig.RestApi(self,'l3api',handler=awslambda,rest_api_name='bankingrestapi')
         #apigateway
         bankingrestapi=apig.LambdaRestApi(self,"bankingrestapi",handler=awslambda,rest_api_name='bankingrestapi',deploy=True,proxy=False)
         banhstatus=bankingrestapi.root.add_resource('banhstatus')
